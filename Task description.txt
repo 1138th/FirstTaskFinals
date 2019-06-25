@@ -1,0 +1,2 @@
+Task 1a) Find a return matrix (Найти обратную матрицу)
+Task 1b) Sort list or array by count of vowels in string (Отсортировать список по количеству гласных в строке)
