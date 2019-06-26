@@ -38,8 +38,6 @@ public class Main extends MatrixWork{
         } else {
             reserveMatrix = CloneMatrix(matrix);
             reserveMatrix = AlgebraicAdditions(reserveMatrix);
-            System.out.println("algebraic additions matrix:");
-            Print(reserveMatrix);
             reserveMatrix = ReverseMatrix(reserveMatrix, det);
             System.out.println("reverse matrix:");
             Print(reserveMatrix);

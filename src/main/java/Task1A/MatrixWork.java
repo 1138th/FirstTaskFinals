@@ -60,8 +60,8 @@ class MatrixWork {
         Random rand = new Random();
         for (int i = 0; i < size; i++){
             for (int j = 0; j <size; j++){
-                matrix[i][j] = rand.nextInt(200) + 1;
-                matrix[i][j] /= 10;
+                matrix[i][j] = rand.nextInt(4000) - 2000;
+                matrix[i][j] /= 100;
             }
         }
         return matrix;
