@@ -102,21 +102,36 @@ class MatrixWork {
     }
 
     static double[][] AlgebraicAdditions(double[][] matrix){
-        double[][] additionsMatrix = new double[matrix.length][matrix.length];
-        double[][] addition = new double[matrix.length - 1][matrix.length - 1];
+        int size = matrix.length;
+        double[][] additionsMatrix = new double[size][size];
+        double[][] addition = new double[size - 1][size - 1];
+        double[] additionHelper = new double[(size - 1) * (size - 1)];
+        int additionHelperIndex = 0;
         double[][] transposedMatrix = Transposition(matrix);
-        Print(transposedMatrix);System.out.println();
-        for (int i = 0; i < additionsMatrix.length; i++){
-            for (int j = 0; j < additionsMatrix[i].length; j++){
-                for (int i1 = 0; i1 < additionsMatrix.length; i1++){
-                    for (int j1 = 0; j1 < additionsMatrix[i].length; j1++){
+        for (int i = 0; i < size; i++){
+            for (int j = 0; j < size; j++){
+                for (int i1 = 0; i1 < size; i1++){
+                    for (int j1 = 0; j1 < size; j1++){
+                        if ((i != i1) && (j != j1))
+                            additionHelper[additionHelperIndex++] = transposedMatrix[i1][j1];
                     }
                 }
-                Print(addition);System.out.println();
-                additionsMatrix[i][j] = Determinant(addition);
+                addition = ConvertLineToMatrix(additionHelper, size - 1);
+                additionsMatrix[i][j] = Math.pow(-1, (i + 1) + (j + 1)) * Determinant(addition);
+                additionHelperIndex = 0;
             }
         }
         return additionsMatrix;
+    }
+
+    static double[][] ReverseMatrix(double[][] algebraicAdditions, double determinant){
+        double[][] reverseMatrix = new double[algebraicAdditions.length][algebraicAdditions.length];
+        for (int i = 0; i < reverseMatrix.length; i++){
+            for (int j = 0; j < reverseMatrix[i].length; j++){
+                reverseMatrix[i][j] = algebraicAdditions[i][j] / determinant;
+            }
+        }
+        return reverseMatrix;
     }
 
     static double[][] CloneMatrix(double[][] matrix){

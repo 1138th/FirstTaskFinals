@@ -12,16 +12,14 @@ public class Main extends MatrixWork{
         int size;
         System.out.println("numbers of lines and columns are be equal if we want to calculate reverse matrix\n" +
                     "enter matrix size:");
-        //size = IsCorrectSize();
-        size = 3;
+        size = IsCorrectSize();
         double[][] matrix = new double[size][size];
         System.out.println("matrix created");
         String answer;
-        /*do{
+        do{
             System.out.println("do you want to fill it manually or randomly?");
             answer = scan.nextLine();
-        } while (!(answer.equals("manually") || answer.equals("randomly")));*/
-        answer = "randomly";
+        } while (!(answer.equals("manually") || answer.equals("randomly")));
         double[] matrixContent = new double[size * size];
         if (answer.equals("manually")){
             System.out.println("input " + matrixContent.length + " numbers");
@@ -38,10 +36,14 @@ public class Main extends MatrixWork{
         if (det == 0){
             System.out.println("determinant equals zero: reverse matrix does not exist");
         } else {
+            reserveMatrix = CloneMatrix(matrix);
+            reserveMatrix = AlgebraicAdditions(reserveMatrix);
+            System.out.println("algebraic additions matrix:");
+            Print(reserveMatrix);
+            reserveMatrix = ReverseMatrix(reserveMatrix, det);
+            System.out.println("reverse matrix:");
+            Print(reserveMatrix);
         }
-        reserveMatrix = CloneMatrix(matrix);
-        reserveMatrix = AlgebraicAdditions(reserveMatrix);
-        Print(reserveMatrix);
         scan.close();
     }
 }
