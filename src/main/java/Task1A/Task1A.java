@@ -2,13 +2,12 @@ package Task1A;
 
 import java.util.Scanner;
 
-public class Main extends MatrixWork{
+public class Task1A extends MatrixWork{
 
     private static Scanner scan = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        System.out.println("hello\n" +
-                "we will create matrix and calculate its reverse version\n"+
+    public static void TaskA() {
+        System.out.println("we will create matrix and calculate its reverse version\n"+
                 "numbers of lines and columns must be equal if you want to calculate reverse matrix\n" +
                     "enter matrix lines:");
         int lines = IsCorrectSize();
