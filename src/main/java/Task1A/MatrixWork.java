@@ -44,22 +44,22 @@ class MatrixWork {
         return matrixContent;
     }
 
-    static double[][] ConvertLineToMatrix(double[] matrixContent, int size){
-        double[][] matrix = new double[size][size];
+    static double[][] ConvertLineToMatrix(double[] matrixContent, int lines, int columns){
+        double[][] matrix = new double[lines][columns];
         int lineIndex = 0;
-        for (int i = 0; i < size; i++){
-            for (int j = 0; j < size; j++){
+        for (int i = 0; i < lines; i++){
+            for (int j = 0; j < columns; j++){
                 matrix[i][j] = matrixContent[lineIndex++];
             }
         }
         return matrix;
     }
 
-    static double[][] FillRandomly(int size){
-        double[][] matrix = new double[size][size];
+    static double[][] FillRandomly(int lines, int columns){
+        double[][] matrix = new double[lines][columns];
         Random rand = new Random();
-        for (int i = 0; i < size; i++){
-            for (int j = 0; j <size; j++){
+        for (int i = 0; i < lines; i++){
+            for (int j = 0; j < columns; j++){
                 matrix[i][j] = rand.nextInt(4000) - 2000;
                 matrix[i][j] /= 100;
             }
@@ -116,7 +116,7 @@ class MatrixWork {
                             additionHelper[additionHelperIndex++] = transposedMatrix[i1][j1];
                     }
                 }
-                addition = ConvertLineToMatrix(additionHelper, size - 1);
+                addition = ConvertLineToMatrix(additionHelper, size - 1, size - 1);
                 additionsMatrix[i][j] = Math.pow(-1, (i + 1) + (j + 1)) * Determinant(addition);
                 additionHelperIndex = 0;
             }
